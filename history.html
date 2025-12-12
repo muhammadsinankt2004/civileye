@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Complaints — Civil Eye</title>
+    <link rel="shortcut icon" href="C:\Users\rahul\OneDrive\Desktop\HACKATHON\images\logo.jpg" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        :root{--primary:#1e3a8a;--accent:#e91e63;--light:#f0f4f8;--success:#10b981;--warning:#f59e0b;--info:#3b82f6}
+        *{box-sizing:border-box;margin:0;padding:0}
+        body{background:linear-gradient(135deg,#f0f4f8,#fff);font-family:'Segoe UI',sans-serif;color:#333;display:flex;flex-direction:column;min-height:100vh}
+        
+        .navbar{background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.08);padding:0.75rem 0}
+        .navbar-brand{font-weight:800;color:var(--primary);font-size:1.3rem;letter-spacing:1px}
+        .nav-link{color:var(--primary);font-weight:500;transition:all 0.3s}
+        .nav-link:hover{color:var(--accent)}
+        
+        .info-banner{background:var(--primary);color:#fff;padding:0.75rem;font-size:0.9rem;text-align:center}
+        
+        main{padding:3rem 1rem;flex:1}
+        main h2{color:var(--primary);font-weight:800;margin-bottom:2rem;font-size:2rem}
+        
+        .complaint-card{background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.08);padding:1.5rem;margin-bottom:1.5rem;border-left:5px solid var(--accent);transition:all 0.3s}
+        .complaint-card:hover{box-shadow:0 6px 20px rgba(0,0,0,0.12);transform:translateY(-2px)}
+        
+        .complaint-header{display:flex;justify-content:space-between;align-items:start;margin-bottom:1rem;gap:1rem;flex-wrap:wrap}
+        .complaint-id{color:var(--primary);font-weight:800;font-size:1.1rem}
+        .status-badge{padding:0.4rem 1rem;border-radius:20px;font-weight:600;font-size:0.85rem}
+        .status-pending{background:#fff3cd;color:#856404}
+        .status-inprogress{background:#cfe2ff;color:#084298}
+        .status-resolved{background:#d1e7dd;color:#0f5132}
+        .status-closed{background:#f8d7da;color:#842029}
+        
+        .complaint-details{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin:1.5rem 0}
+        .detail-item{border-bottom:1px solid #e0e0e0;padding-bottom:1rem}
+        .detail-label{color:#666;font-weight:600;font-size:0.9rem;text-transform:uppercase;letter-spacing:0.5px}
+        .detail-value{color:var(--primary);font-weight:700;margin-top:0.3rem;font-size:1rem}
+        
+        .progress-container{margin:1.5rem 0}
+        .progress-bar-bg{background:#e0e0e0;border-radius:10px;height:12px;overflow:hidden}
+        .progress-bar-fill{background:linear-gradient(90deg,var(--info),var(--success));height:100%;border-radius:10px;transition:width 0.3s}
+        .progress-text{display:flex;justify-content:space-between;font-weight:600;color:var(--primary);margin-top:0.5rem;font-size:0.9rem}
+        
+        .timeline{margin-top:1.5rem;border-left:3px solid var(--accent);padding-left:1.5rem}
+        .timeline-item{margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid #e0e0e0}
+        .timeline-item:last-child{border-bottom:none}
+        .timeline-date{color:var(--accent);font-weight:700;font-size:0.9rem}
+        .timeline-text{color:#555;margin-top:0.3rem;line-height:1.5}
+        
+        .filter-section{margin-bottom:2rem;display:flex;gap:1rem;flex-wrap:wrap}
+        .filter-btn{border:2px solid var(--primary);color:var(--primary);background:#fff;padding:0.5rem 1.2rem;border-radius:20px;cursor:pointer;font-weight:600;transition:all 0.3s}
+        .filter-btn.active{background:var(--primary);color:#fff}
+        .filter-btn:hover{background:var(--primary);color:#fff}
+        
+        footer{background:var(--primary);color:#fff;padding:1.5rem;text-align:center;margin-top:auto}
+        
+        @media(max-width:576px){
+            main h2{font-size:1.5rem}
+            .complaint-header{flex-direction:column}
+            .complaint-details{grid-template-columns:1fr}
+        }
+    </style>
+</head>
+<body>
+
+<!-- Info Banner -->
+<div class="info-banner">
+  ℹ️ Track your submitted complaints and view their resolution status
+</div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container-fluid px-lg-5">
+    <a class="navbar-brand" href="Home.html">
+      <img src="images/logo.jpg" alt="logo" width="32" height="32" class="me-2">
+      Civil Eye
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMain">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-3">
+        <li class="nav-item"><a class="nav-link" href="Home.html">Home</a></li>
+        <li class="nav-item"><a id="signoutBtn" class="nav-link" href="#">Sign Out</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+  <h2>My Complaints</h2>
+  
+  <!-- Empty State Message -->
+  <div style="text-align:center;padding:3rem 1rem">
+    <div style="font-size:4rem;margin-bottom:1rem">📋</div>
+    <h3 style="color:var(--primary);margin-bottom:1rem">No Complaints Yet</h3>
+    <p style="color:#666;font-size:1.05rem;margin-bottom:2rem">Please <a href="signin.html" style="color:var(--accent);font-weight:600;text-decoration:none">sign in</a> to view your complaint history and track their status.</p>
+    <a href="Complaint.html" class="btn" style="background:var(--accent);color:#fff;padding:0.75rem 2rem;border-radius:8px;text-decoration:none;font-weight:600">Register New Complaint</a>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <small>© <span id="year"></span> Civil Eye — Report and Track Issues</small>
+  </div>
+</footer>
+
+<script>
+function filterStatus(status, e) {
+  // Update active button if event provided
+  if (e && e.target) {
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    e.target.classList.add('active');
+  }
+
+  // Filter cards
+  const cards = document.querySelectorAll('.complaint-card');
+  cards.forEach(card => {
+    if (status === 'all' || card.dataset.status === status) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+// Sign out handler
+document.addEventListener('DOMContentLoaded', function(){
+  const signout = document.getElementById('signoutBtn');
+  if(signout) {
+    signout.addEventListener('click', async function(evt){
+      evt.preventDefault();
+      try{
+        const res = await fetch('http://localhost:5000/api/auth/signout', {method:'POST', credentials:'include'});
+        const data = await res.json();
+        if(!res.ok) throw new Error(data.error || 'Sign out failed');
+        window.location.href = 'Home.html';
+      }catch(err){
+        alert(err.message);
+      }
+    });
+  }
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

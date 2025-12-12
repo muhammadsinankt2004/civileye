@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civil Eye — Report Issues, Drive Change</title>
+    <link rel="shortcut icon" href="images\logo.jpg" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        :root{--primary:#1e3a8a;--accent:#e91e63;--light:#f0f4f8}
+        *{box-sizing:border-box;margin:0;padding:0}
+        body{font-family:'Segoe UI',sans-serif;background:#f5f7fa;color:#333}
+        
+        /* Navbar */
+        .navbar{background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.08);padding:0.75rem 0}
+        .navbar-brand{font-weight:800;color:var(--primary);font-size:1.3rem;letter-spacing:1px}
+        .nav-link{color:var(--primary);font-weight:500;transition:all 0.3s}
+        .nav-link:hover{color:var(--accent);text-decoration:none}
+        .btn-outline-cta{border:2px solid var(--accent);color:var(--accent);font-weight:600;border-radius:20px;padding:0.4rem 1.2rem;font-size:0.9rem}
+        .btn-outline-cta:hover{background:var(--accent);color:#fff}
+        .btn-cta{background:var(--accent);color:#fff;font-weight:600;border-radius:20px;padding:0.5rem 1.3rem;border:none}
+        .btn-cta:hover{background:#c2185b;color:#fff}
+
+        /* Info Banner */
+        .info-banner{background:var(--primary);color:#fff;padding:0.75rem;font-size:0.9rem;text-align:center}
+
+        /* Hero Section */
+        .hero{background:linear-gradient(135deg,#f0f4f8,#fff);padding:3.5rem 1rem;min-height:70vh;display:flex;align-items:center}
+        .hero-content{max-width:1200px;margin:0 auto;width:100%}
+        .hero-text h1{color:var(--primary);font-size:2.8rem;font-weight:900;line-height:1.2;margin-bottom:0.5rem}
+        .hero-text h1 .accent{color:var(--accent)}
+        .hero-text p{color:#666;font-size:1.1rem;margin-bottom:1.5rem}
+
+        /* Search Bar */
+        .search-container{margin:2rem 0;display:flex;gap:0.5rem}
+        .search-bar{display:flex;flex:1;max-width:500px;background:#fff;border-radius:30px;box-shadow:0 4px 12px rgba(0,0,0,0.1);padding:0.5rem 1.5rem;align-items:center}
+        .search-bar input{border:none;flex:1;padding:0.5rem;font-size:1rem;outline:none}
+        .search-bar input::placeholder{color:#999}
+
+        /* Suggested Services */
+        .suggested{margin-top:2.5rem}
+        .suggested-label{color:#666;font-weight:600;margin-bottom:1rem;font-size:0.95rem}
+        .suggested-items{display:flex;gap:1rem;flex-wrap:wrap}
+        .suggested-item{background:#fff;padding:0.8rem 1.3rem;border-radius:25px;color:var(--primary);font-weight:500;text-decoration:none;box-shadow:0 2px 6px rgba(0,0,0,0.05);transition:all 0.3s}
+        .suggested-item:hover{box-shadow:0 4px 12px rgba(0,0,0,0.12);transform:translateY(-2px)}
+
+        /* Features Grid */
+        .features{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+        .feature{background:#fff;padding:2rem 1.5rem;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.06);text-align:center}
+        .feature-icon{font-size:2.5rem;margin-bottom:1rem}
+        .feature h4{color:var(--primary);margin-bottom:0.5rem;font-weight:700}
+        .feature p{color:#666;font-size:0.95rem;line-height:1.5}
+
+        /* Footer */
+        footer{background:var(--primary);color:#fff;padding:2rem;text-align:center;margin-top:auto}
+
+        @media(max-width:768px){
+            .hero-text h1{font-size:2rem}
+            .features{grid-template-columns:1fr}
+            .search-bar{max-width:100%}
+            .suggested-items{flex-direction:column}
+        }
+    </style>
+</head>
+<body>
+
+<!-- Info Banner -->
+<div class="info-banner">
+  ℹ️ This is a civic reporting platform. Use it to report and track local issues and connect with authorities.
+</div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container-fluid px-lg-5">
+    <a class="navbar-brand" href="Home.html">
+      <img src="images\logo.jpg" alt="logo" width="32" height="32" class="me-2">
+      Civil Eye
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMain">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-3">
+        <li class="nav-item"><a class="nav-link" href="Home.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="Complaint.html">Register Complaint</a></li>
+        <li class="nav-item"><a class="nav-link" href="history.html">Complaint Status</a></li>
+        <li class="nav-item"><a class="btn btn-outline-cta" href="signin.html">Sign In</a></li>
+        <li class="nav-item"><a class="btn btn-cta" href="signup.html">Register</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="hero">
+  <div class="hero-content">
+    <div class="row align-items-center">
+      <div class="col-lg-8">
+        <div class="hero-text">
+          <h1>Report Issues,<br><span class="accent">Drive Change</span></h1>
+          <p>Helping citizens report local grievances and track resolutions with transparency and accountability.</p>
+          
+          <div class="search-container">
+            <div class="search-bar">
+              <span>🔍</span>
+              <input type="text" placeholder="Find a complaint type or category">
+            </div>
+            <button class="btn btn-cta">Search</button>
+          </div>
+
+          <div class="suggested">
+            <div class="suggested-label">Popular Categories:</div>
+            <div class="suggested-items">
+              <a href="Complaint.html" class="suggested-item">Road Damage</a>
+              <a href="Complaint.html" class="suggested-item">Water Supply</a>
+              <a href="Complaint.html" class="suggested-item">Public Safety</a>
+              <a href="Complaint.html" class="suggested-item">Utilities</a>
+            </div>
+          </div>
+          
+          <div id="latestComplaints" style="margin-top:1.5rem"></div>
+        </div>
+      </div>
+      <div class="col-lg-4 d-none d-lg-block text-center">
+        <div style="font-size:4rem;margin:1rem 0">📱</div>
+        <p style="color:#999;font-size:0.9rem">Easy reporting on web & mobile</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Features -->
+<section style="padding:3rem 1rem;background:#fff">
+  <div class="container-xl">
+    <h2 style="text-align:center;color:var(--primary);margin-bottom:2rem;font-weight:800">Why Use Civil Eye?</h2>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">⚡</div>
+        <h4>Quick Reporting</h4>
+        <p>Submit complaints in seconds with photos, location, and details.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📊</div>
+        <h4>Real-time Tracking</h4>
+        <p>Monitor resolution progress with live status updates.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🤝</div>
+        <h4>Community Impact</h4>
+        <p>See how your reports improve your locality together.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <small>© <span id="year"></span> Civil Eye — Making communities safer and better.</small>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+<script>
+  async function loadLatest() {
+    const el = document.getElementById('latestComplaints');
+    if(!el) return;
+    el.innerHTML = '<p style="color:#666">Loading latest complaints…</p>';
+    try{
+      const res = await fetch('http://localhost:5000/api/complaints/latest', {credentials:'include'});
+      const data = await res.json();
+      if(!res.ok) throw new Error(data.error || 'Failed to load');
+
+      if(!data.length){
+        el.innerHTML = '<p style="color:#666">No recent complaints.</p>';
+        return;
+      }
+
+      const list = document.createElement('div');
+      list.style.display = 'grid';
+      list.style.gridTemplateColumns = 'repeat(auto-fit,minmax(220px,1fr))';
+      list.style.gap = '0.75rem';
+
+      data.forEach(c => {
+        const card = document.createElement('div');
+        card.style.background = '#fff';
+        card.style.border = '1px solid #eee';
+        card.style.padding = '0.75rem';
+        card.style.borderRadius = '10px';
+        card.innerHTML = `
+          <div style="font-weight:700;color:#1e3a8a">${c.type}</div>
+          <div style="color:#666;font-size:0.95rem;margin-top:0.5rem">${c.location}</div>
+          <div style="margin-top:0.5rem;font-weight:600">${c.priority} • ${c.status}</div>
+          <div style="margin-top:0.5rem;color:#999;font-size:0.85rem">${c.timeAgo}</div>
+        `;
+        list.appendChild(card);
+      });
+
+      el.innerHTML = '';
+      el.appendChild(list);
+    }catch(err){
+      el.innerHTML = `<p style="color:red">${err.message}</p>`;
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', loadLatest);
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
