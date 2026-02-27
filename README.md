@@ -1,2 +1,2 @@
-# civileye
+# civileye hackathon
 Citizens often face difficulties in reporting civic issues due to inefficient communication channels, delayed responses, and lack of proper routing to the responsible authorities. Traditional reporting systems are slow, manual, and offer limited transparency, resulting in unresolved complaints and reduced public satisfaction. There is a need for a smart, automated, and user-friendly platform that allows citizens to report issues easily and ensures that complaints reach the correct authorities without delay.
